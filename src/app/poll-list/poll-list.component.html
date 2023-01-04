@@ -1,0 +1,4 @@
+<h2 class="text-center mb-5 text-secondary">Available Polls</h2>
+<div class=" d-flex flex-wrap justify-content-stretch ">
+    <app-poll   *ngFor="let poll of polls |async" [question]="poll.question" [id]="poll.id" [thumbnailUrl]="poll.thumbnailUrl" [votes]="poll.votes" [voted]="poll.voted" [poll]="poll"></app-poll>
+</div>
