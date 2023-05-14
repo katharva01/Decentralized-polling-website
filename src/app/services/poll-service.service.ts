@@ -10,6 +10,8 @@ export class PollServiceService {
   constructor() { }
 
   getPolls():Observable<Poll[]>{
+
+    
    return of([
     {
       id:1,
