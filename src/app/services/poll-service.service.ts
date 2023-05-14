@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { delay, Observable, of } from 'rxjs';
 import { Poll, PollForm, Vote } from '../types';
+import { Web3Service } from '../Blockchain/web3.service';
+import {fromAscii} from 'web3-utils';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PollServiceService {
 
-  constructor() { }
+  constructor(private web3:Web3Service) { }
 
   getPolls():Observable<Poll[]>{
 
-    
+
    return of([
     {
       id:1,
@@ -43,10 +45,15 @@ export class PollServiceService {
   }
 
   addVote(vote:Vote){
-    console.log(vote);
+    this.web3.executeTransaction("vote",vote.id,vote.vote);
   }
 
   createPoll(poll:PollForm){
-    console.log(poll);
+    this.web3.executeTransaction(
+      "createPoll",
+      poll.question,
+      poll.thumbnailUrl || "",
+      poll.options.map(op=>fromAscii(op))
+      );
   }
 }

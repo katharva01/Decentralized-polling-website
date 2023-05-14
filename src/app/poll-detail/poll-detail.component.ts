@@ -30,9 +30,9 @@ export class PollDetailComponent implements OnInit {
     // console.log(this.voteForm.value);
     const vote:Vote ={ 
       id:this.poll?.id,
-      votes:[
+      vote:
         this.voteForm.get("selected")?.value
-      ]
+      
     };
     this.voted.emit(vote);
   }

@@ -12,5 +12,5 @@ export interface PollForm {
 
 export interface Vote{
     id: any;
-    votes : number[];
+    vote : number;
 }

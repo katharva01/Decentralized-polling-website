@@ -11,7 +11,7 @@ declare var window : any;
 export class Web3Service {
 
   private web3: Web3;
-  private contract : contract;
+  private contract : Contract;
   private contractAddress = "0x3aD096bB427FfE726E402Ad25678030D17e3CC02";
 
   constructor() { 
@@ -21,7 +21,7 @@ export class Web3Service {
         contractAbi,
         this.contractAddress
       );
-      window.ethereum.enable().catch((err)=>console.log(err));
+      window.ethereum.enable().catch((err:any)=>console.log(err));
     }
     else{
       console.log("Metamask not found, install or enable metamask");
